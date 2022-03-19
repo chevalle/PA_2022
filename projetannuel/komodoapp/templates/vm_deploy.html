@@ -1,0 +1,10 @@
+{% extends "index.html" %}
+
+{% block content %}
+<form action="" method="post">
+    {% csrf_token %}
+    {{ spec_form }}
+    <input type="submit" value="Submit">
+</form>
+
+{% endblock %}
