@@ -1,0 +1,12 @@
+{% extends "index.html" %}
+{% block content %}
+{% if user_vms %}
+{{ user_vms.1.0 }}
+{% for vms in user_vms %}
+ {{ vms }}
+ {{ vms.0 }}
+ {{ vms.2 }}
+ {{ vms.3 }}
+{% endfor %} 
+{% endif %}
+{% endblock %}
