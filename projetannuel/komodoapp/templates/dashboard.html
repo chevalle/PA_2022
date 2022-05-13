@@ -1,12 +1,43 @@
 {% extends "index.html" %}
 {% block content %}
+{% load static %}
+<center><img id="hal2" src='{% static "images/hal.gif"%}' alt="description of gif" ></center>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+{% if success %}
+ <p style='color:white'> Operation on vm</p>{{ vm_hostname }}<p style='color:white'> was successful </p>
+{% elif 'Failed' in success %} 
+ <p style='color:white'> Operation on vm</p>{{ vm_hostname }}<p style='color:white'> failed, contact admin. Failed job id is {{ job_id }}</p>
+{% endif %}
+
 {% if user_vms %}
-{{ user_vms.1.0 }}
-{% for vms in user_vms %}
- {{ vms }}
- {{ vms.0 }}
- {{ vms.2 }}
- {{ vms.3 }}
-{% endfor %} 
+<div class="table-wrapper">
+    <h6 class="title">VMs</h2>
+    <table class="fl-table">
+        <thead>
+    <tr>
+      <th>Owner</th>
+      <th>ID</th>
+      <th>VM Name</th>
+      <th>Template</th>
+    </tr>
+   </thead>
+   <tbody>
+   {% for vms in user_vms %} 
+    <tr>
+      <td>{{ vms.0 }}</td>
+      <td>{{ vms.1 }}</td>
+      <td>{{ vms.2 }}</td>
+      <td>{{ vms.3 }}</td>
+      <td><form action="" method="POST" >{% csrf_token %}
+          <button id='bouton' class="btn btn-warning" type="submit" name="action" value="{{  vms.2  }}"> Delete</button>
+          </form> 
+      </td>
+    </tr>
+    {% endfor %}
+</tbody>
+  </table>
+</div>
 {% endif %}
 {% endblock %}

@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'crispy_forms',
     'komodoapp',
+    'material',
 ]
 
 MIDDLEWARE = [
@@ -90,8 +91,12 @@ WSGI_APPLICATION = 'projetannuel.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    	'ENGINE': 'django.db.backends.mysql',
+        'NAME':'django',
+        'USER': 'django',
+        'PASSWORD': 'Admin1234!', 
+        'HOST': '192.168.10.220', # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
+        'PORT': '3306'
     }
 }
 
