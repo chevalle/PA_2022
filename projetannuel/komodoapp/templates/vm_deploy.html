@@ -1,10 +1,17 @@
 {% extends "index.html" %}
 
+{% load static %}
+
 {% block content %}
-<form action="" method="post">
+<div class="form-wrapper">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+{% load material_form %}
+<form id='vm-form' action="" method="post">
     {% csrf_token %}
     {{ spec_form }}
-    <input type="submit" value="Submit">
+    <input id="submit" type="submit" class="btn" value="Submit">
 </form>
+</div>
+<img id="hal" src='{% static "images/hal.gif"%}' alt="description of gif" >
 
 {% endblock %}

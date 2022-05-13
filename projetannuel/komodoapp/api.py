@@ -42,16 +42,17 @@ class WorkflowManager:
     """
         payload = toJSON(values, username)
         response = generate_response(payload, self.username, self.password, "http://192.168.10.5/api/v2/workflow_job_templates/15/launch/")
+        print(response)
         return response
         
-    def delete_vm(self, vm_name, url_workflow):
+    def delete_vm(self, vm_name):
 
         """
-    Lance le workflow de creation de VM
+    Lance le workflow de suppression de VM
     """
         payload = json.dumps({"extra_vars":{"vm_name": vm_name}})
-
-        response = generate_response(payload, self.username, self.password, url_workflow)
+        response = generate_response(payload, self.username, self.password, "http://192.168.10.5/api/v2/workflow_job_templates/19/launch/")
+        print(response)
         return response
 
     def get_workflow_status(self, job_id):
