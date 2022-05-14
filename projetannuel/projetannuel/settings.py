@@ -11,8 +11,13 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+from dotenv import load_dotenv
 import ldap 
 from django_auth_ldap.config import LDAPSearch
+
+load_dotenv()
+
+SQL_IP = os.getenv('SQL_IP')
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -95,7 +100,7 @@ DATABASES = {
         'NAME':'django',
         'USER': 'django',
         'PASSWORD': 'Admin1234!', 
-        'HOST': '192.168.10.220', # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
+        'HOST': SQL_IP, # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
         'PORT': '3306'
     }
 }
